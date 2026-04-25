@@ -57,3 +57,27 @@ Analysis endpoint:
 
 - Emulator (Android Studio): http://10.0.2.2:8787/api/ai/candidate-analysis
 - Physical device: use your computer LAN IP, for example http://192.168.1.20:8787/api/ai/candidate-analysis
+
+## 6) Production endpoint
+
+For Render deployment, set the Android app endpoint to:
+
+- https://matchmyskills-ai-backend.onrender.com/api/ai/candidate-analysis
+
+Update `local.properties` in your Android project with:
+
+```properties
+AI_ANALYSIS_ENDPOINT=https\://matchmyskills-ai-backend.onrender.com/api/ai/candidate-analysis
+```
+
+If you want to switch back to local development later, replace it with:
+
+```properties
+AI_ANALYSIS_ENDPOINT=http\://10.0.2.2\:8787/api/ai/candidate-analysis
+```
+
+## 7) Security notes
+
+- Keep `OPENROUTER_API_KEY` only in backend `.env`
+- Do not commit `.env` or `local.properties`
+- Use `APP_SHARED_SECRET` if you want the Android app to validate requests against the backend

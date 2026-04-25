@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 const PORT = Number(process.env.PORT || 8787);
 const openRouterApiKey = process.env.OPENROUTER_API_KEY || "";
-const model = process.env.OPENROUTER_MODEL || "openai/gpt-4o-mini";
+const model = process.env.OPENROUTER_MODEL || "openai/gpt-3.5-turbo";
 const appSharedSecret = process.env.APP_SHARED_SECRET || "";
 const OPENROUTER_TIMEOUT_MS = 15000;
 
@@ -88,6 +88,7 @@ app.post("/api/ai/candidate-analysis", async (req, res) => {
         body: JSON.stringify({
           model,
           temperature: 0.2,
+          max_tokens: 300,
           messages: [
             {
               role: "system",
